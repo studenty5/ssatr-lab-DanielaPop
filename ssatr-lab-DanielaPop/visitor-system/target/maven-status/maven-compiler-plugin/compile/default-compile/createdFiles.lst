@@ -1,0 +1,7 @@
+ro\utcn\ssatr\model\StatusVizita.class
+ro\utcn\ssatr\model\Vizita.class
+ro\utcn\ssatr\model\TipVizitator.class
+ro\utcn\ssatr\model\Vizitator.class
+ro\utcn\ssatr\serviciu\ServiciuVizite.class
+ro\utcn\ssatr\model\Gazda.class
+ro\utcn\ssatr\Main.class
