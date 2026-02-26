@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adăugare Vizită</title>
+</head>
+<body>
+
+<h2>Adaugă Vizită Nouă</h2>
+
+<form th:action="@{/vizite/salveaza}"
+      method="post"
+      th:object="${vizita}">
+
+    <label>Nume Vizitator:</label><br>
+    <input type="text" th:field="*{visitorName}" required />
+    <br><br>
+
+    <label>Email:</label><br>
+    <input type="email" th:field="*{email}" required />
+    <br><br>
+
+    <label>Nume Gazdă:</label><br>
+    <input type="text" th:field="*{hostName}" required />
+    <br><br>
+
+    <label>Tip Vizitator:</label><br>
+    <select th:field="*{visitorType}">
+        <option value="VIZITATOR">Vizitator</option>
+        <option value="CONTRACTOR">Contractor</option>
+        <option value="VIP">VIP</option>
+    </select>
+    <br><br>
+
+    <button type="submit">Salvează</button>
+
+</form>
+
+<br>
+<a th:href="@{/vizite}">Înapoi la listă</a>
+
+</body>
+</html>

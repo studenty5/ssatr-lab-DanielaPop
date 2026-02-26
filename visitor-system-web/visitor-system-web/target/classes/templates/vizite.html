@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vizite</title>
+</head>
+<body>
+
+<h2>Lista Vizite</h2>
+
+<a th:href="@{/vizite/noua}">Adaugă Vizită Nouă</a>
+|
+<a th:href="@{/vizite/active}">Vizitatori în clădire</a>
+
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>Nume</th>
+        <th>Email</th>
+        <th>Gazdă</th>
+        <th>Status</th>
+        <th>QR</th>
+        <th>Acțiuni</th>
+    </tr>
+
+    <tr th:each="v : ${vizite}">
+        <td th:text="${v.visitorName}"></td>
+        <td th:text="${v.email}"></td>
+        <td th:text="${v.hostName}"></td>
+        <td th:text="${v.status}"></td>
+
+        <!-- QR CODE -->
+        <td>
+            <img th:src="@{'/qr_' + ${v.id} + '.png'}"
+                 width="100"
+                 alt="QR Code"/>
+        </td>
+
+        <!-- BUTOANE -->
+        <td>
+            <a th:if="${v.status == 'PROGRAMATA'}"
+               th:href="@{/vizite/intrare/{id}(id=${v.id})}">
+                Intrare
+            </a>
+
+            <a th:if="${v.status == 'IN_CLADIRE'}"
+               th:href="@{/vizite/iesire/{id}(id=${v.id})}">
+                Ieșire
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Visitor Badge</title>
+</head>
+<body style="text-align:center; font-family:Arial">
+
+<h2>Visitor Badge</h2>
+
+<div style="border:2px solid black; padding:20px; width:300px; margin:auto;">
+  <h3 th:text="${vizita.visitorName}"></h3>
+  <p>Email: <span th:text="${vizita.email}"></span></p>
+  <p>Gazdă: <span th:text="${vizita.hostName}"></span></p>
+  <p>Status: <span th:text="${vizita.status}"></span></p>
+</div>
+
+<br>
+
+<a th:href="@{/vizite/iesire/{id}(id=${vizita.id})}">
+  Ieșire din clădire
+</a>
+
+</body>
+</html>
