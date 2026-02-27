@@ -104,16 +104,35 @@ Example:
 ## Screenshots
 
    ### Main Dashboard
-   []
+  ![Dashboard](images/panouprincipal.png)
 
-   ### [Feature Name]
-   [Image]
+   ### [Lista de vizite cu vizitele aferente]
+  ![Vizite](images/lista_vizite.png)
 
+  ### [Persoanele din cladire dupa inregistratrea vizitei]
+  ![Persoane In Cladire](images/lista_vizite.png)
+
+  ### [Scanadre QR / Badge]
+  ![QR](images/cod_QR.png)
+  ![Badge](images/mail.png)
 ---
 
 ## Database Schema
 
-[Brief description of your main database tables/collections and their relationships. Could also include a schema script or diagram]
+[Principala entitate este tabela visits.
+Câmpuri principale:
+- id (UUID) – identificator unic
+- visitor_name – numele vizitatorului
+- email – email vizitator
+- host_name – numele gazdei
+- start_time – data și ora programării
+- expiration_time – data și ora expirării
+- entry_time – ora intrării
+- exit_time – ora ieșirii
+- status – PROGRAMATA / IN_CLADIRE / IESITA 
+- visitor_type – tip vizitator (Visitor / Contractor /VIP)
+
+Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spring Data JPA.]
 
 ---
 
@@ -121,33 +140,34 @@ Example:
 
 ### Prerequisites
 
-- Java 17 or higher
-- Docker and Docker Compose
+- Java 21
+- PostgreSQL
 - Maven 3.8+
-- [Any other requirements]
+- Cont Gmail cu autentificare in doi pasi aplicata
+- Parola pentru aplicatii 
 
 ### Setup Instructions
 
 1. **Clone the repository**
 ```bash
-   git clone [repository-url]
-   cd [project-directory]
+   git clone [https://github.com/studenty5/ssatr-lab-DanielaPop.git]
+   cd [ssatr-lab-DanielaPop/visitor-system-web]
 ```
 
-2. **Start infrastructure services**
+2. **Configure**
 ```bash
-   docker-compose up -d
+
+ - Database [CREATE DATABASE facility_access]
+ - Configure Email (Gmail App Password) [ in application.properties:
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=emailul_tau@gmail.com
+spring.mail.password=parola_pentru_aplicatii
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true]
 ```
 
-3. **Configure application**
-```bash
-   # Copy example configuration
-   cp src/main/resources/application.properties.example src/main/resources/application.properties
-   
-   # Edit configuration if needed
-```
-
-4. **Build the application**
+3. **Build the application**
 ```bash
    mvn clean install
 ```
@@ -159,192 +179,38 @@ Example:
 
 6. **Access the application**
    - Web Interface: http://localhost:8080
-   - [Any other endpoints]
-
-
+   - Lista Vizite: http://localhost:8080/vizite
 
 ---
 
 ## Challenges and Solutions
 
-OPTIONAL
+OPTIONAL:
 
-[Describe 2-3 main challenges you encountered during implementation and how you solved them]
+**Challenge 1:** [Autentificare Gmail prin SMTP]  
+**Solution:** [Activarea autentificării în doi pași și generarea unei parole pentru aplicații ce a fost folosita in partea de cod (App Password).]
+**Problem no.1:** [Totul functioneaza doar daca nu se modifica agresa de mail.]
 
-**Challenge 1:** [Description]  
-**Solution:** [How you addressed it]
+**Challenge 2:** [Gestionarea corectă a statusurilor la scanări repetate]  
+**Solution:** [Implementarea unei logici clare de tranziție între statusuri (PROGRAMATA → IN_CLADIRE → IESITA)]
 
-**Challenge 2:** [Description]  
-**Solution:** [How you addressed it]
-
+**Challenge 3:** [Implementarea expirarii automate]
+**Solution:** [Utilizarea unui task programat (Spring Scheduling) și verificarea expirationTime la fiecare scanare.]
 ---
 
 ## Future Improvements
 
-[List 3-5 potential enhancements if this were to be developed further]
+În această secțiune sunt incluse funcționalitățile care nu au putut fi implementate complet în cadrul proiectului, dar care ar reprezenta îmbunătățiri importante pentru o versiune viitoare a sistemului.
 
-- [Improvement 1]
-- [Improvement 2]
-- [Improvement 3]
+Deși aplicația este funcțională și îndeplinește cerințele de bază ale scenariului ales, există mai multe limitări și aspecte care pot fi optimizate:
+- Implementarea unui mecanism mai robust de gestionare a scanărilor QR, astfel încât să fie prevenite scanările multiple consecutive sau utilizarea abuzivă a codurilor.
+- Îmbunătățirea managementului situațiilor de urgență, prin automatizarea procesului de evacuare și introducerea unui sistem de confirmare a prezenței după evacuare.
+- Implementarea completă a unui sistem de trimitere automată a mesajelor de avertizare prin email către toți vizitatorii aflați în clădire în cazul declanșării unei situații de urgență (funcționalitate nefinalizată din cauza limitărilor tehnice și de timp).
+- Introducerea unui sistem de autentificare și autorizare pe roluri (Administrator, Security, Host).
+- Dezvoltarea unei interfețe mai avansate pentru monitorizare în timp real (de exemplu utilizând WebSocket).
+- Restricționarea accesului în funcție de tipul vizitatorului și de zonele clădirii.
+Aceste îmbunătățiri ar transforma aplicația dintr-un prototip funcțional într-un sistem mult mai apropiat de un produs utilizabil într-un mediu real.]
 
----] - SSATR IA 2025
-
-**Student:** [Your Name]  
-**Scenario:** [Scenario Number and Name]
-
----
-
-## Project Overview
-
-[Brief description of the project - 2-3 sentences explaining what the system does and its main purpose]
-
-### Key Features
-
-- Feature 1: [Brief description]
-- Feature 2: [Brief description]
-- Feature 3: [Brief description]
-- Feature 4: [Brief description]
-
----
-
-## Technology Stack
-
-### Backend
-- [e.g., Java 17, Spring Boot 3.2]
-- [e.g., RabbitMQ / Apache Kafka]
-- [e.g., PostgreSQL / MongoDB]
-
-### Frontend
-- [e.g., Thymeleaf, HTML/CSS/JavaScript]
-- [e.g., Bootstrap 5]
-
-### Infrastructure
-- [e.g., Docker, Docker Compose]
-- [e.g., Maven]
-
-### Additional Tools/Libraries
-- [List any other significant libraries or tools used]
-
----
-
-## System Architecture
-
-### High-Level Architecture
-
-[Provide a brief description of your system architecture. You should include a diagram image here and describe the main components and their interactions]
-
-**Main Components:**
-
-1. **[Component Name]**: [Brief description of responsibility]
-2. **[Component Name]**: [Brief description of responsibility]
-3. **[Component Name]**: [Brief description of responsibility]
-
-### Data Flows
-
-[Describe how data flows through your system - from user input to final output/notification]
-
-#### Data Flow 1
-1. User scans QR code
-2. Request sent to backend API
-3. Message published to RabbitMQ/Kafka
-4. Consumer processes message and updates database
-5. Real-time notification sent to relevant users
-
----
-
-### Simulations and Simplifications
-
-[Explain what aspects were simulated or simplified for the proof-of-concept]
-
-Example:
-- QR code scanning simulated using manual code input
-- GPS coordinates replaced with predefined location data
-- Mobile app replaced with responsive web interface
-
-## Screenshots
-
-   ### Main Dashboard
-   [Image]
-
-   ### [Feature Name]
-   [Image]
-
----
-
-## Database Schema
-
-[Brief description of your main database tables/collections and their relationships. Could also include a schema script or diagram]
-
----
-
-## Running the Application
-
-### Prerequisites
-
-- Java 17 or higher
-- Docker and Docker Compose
-- Maven 3.8+
-- [Any other requirements]
-
-### Setup Instructions
-
-1. **Clone the repository**
-```bash
-   git clone [repository-url]
-   cd [project-directory]
-```
-
-2. **Start infrastructure services**
-```bash
-   docker-compose up -d
-```
-
-3. **Configure application**
-```bash
-   # Copy example configuration
-   cp src/main/resources/application.properties.example src/main/resources/application.properties
-   
-   # Edit configuration if needed
-```
-
-4. **Build the application**
-```bash
-   mvn clean install
-```
-
-5. **Run the application**
-```bash
-   mvn spring-boot:run
-```
-
-6. **Access the application**
-   - Web Interface: http://localhost:8080
-   - [Any other endpoints]
+- [Improvement]
 
 
-
----
-
-## Challenges and Solutions
-
-OPTIONAL
-
-[Describe 2-3 main challenges you encountered during implementation and how you solved them]
-
-**Challenge 1:** [Description]  
-**Solution:** [How you addressed it]
-
-**Challenge 2:** [Description]  
-**Solution:** [How you addressed it]
-
----
-
-## Future Improvements
-
-[List 3-5 potential enhancements if this were to be developed further]
-
-- [Improvement 1]
-- [Improvement 2]
-- [Improvement 3]
-
----
