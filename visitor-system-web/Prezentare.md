@@ -104,7 +104,7 @@ Example:
 ## Screenshots
 
    ### Main Dashboard
-![Dashboard](visitor-system-web/images/dashboard.png)
+![Dashboard](visitor-system-web/images/panou_principal.png)
 
 ### Lista de vizite
 ![Vizite](visitor-system-web/images/lista_vizite.png)
