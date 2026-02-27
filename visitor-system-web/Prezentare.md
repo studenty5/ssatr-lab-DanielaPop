@@ -189,8 +189,10 @@ spring.mail.properties.mail.smtp.starttls.enable=true]
 
 OPTIONAL:
 
-**Challenge 1:** Autentificare Gmail prin SMTP] 
+**Challenge 1:** Autentificare Gmail prin SMTP
+
 **Solution:** Activarea autentificării în doi pași și generarea unei parole pentru aplicații ce a fost folosita in partea de cod (App Password).
+
 **Problem no.1:** Totul functioneaza doar daca nu se modifica agresa de mail.
 
 **Challenge 2:** Gestionarea corectă a statusurilor la scanări repetate]  
