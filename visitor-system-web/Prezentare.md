@@ -1,49 +1,49 @@
 
-# [Visitor Management System] - SSATR IA 2025
+# Visitor Management System- SSATR IA 2025
 
-**Student:** [Pop Daniela-Felicia]  
-**Scenario:** [10. Visitor/Contractor Sign-In System ]
+**Student:** Pop Daniela-Felicia  
+**Scenario:** 10. Visitor/Contractor Sign-In System 
 
 ---
 
 ## Project Overview
 
-[Acest proiect implementează un sistem inteligent de înregistrare și gestionare a vizitatorilor într-o clădire modernă. Sistemul permite programarea vizitelor, generarea și trimiterea automată a codurilor QR pentru acces, monitorizarea în timp real a persoanelor aflate în clădire și trimiterea QR prin email.
+Acest proiect implementează un sistem inteligent de înregistrare și gestionare a vizitatorilor într-o clădire modernă. Sistemul permite programarea vizitelor, generarea și trimiterea automată a codurilor QR pentru acces, monitorizarea în timp real a persoanelor aflate în clădire și trimiterea QR prin email.
 
-Scopul principal este simularea unui sistem real de control acces și siguranță, incluzând funcționalități precum expirarea automată a permiselor și gestionarea situațiilor de urgență.]
+Scopul principal este simularea unui sistem real de control acces și siguranță, incluzând funcționalități precum expirarea automată a permiselor și gestionarea situațiilor de urgență.
 
 ### Key Features
 
-- Feature 1: [Generare și trimitere automată QR Code prin email pentru fiecare vizită programată.]
-- Feature 2: [Monitorizare în timp real a persoanelor aflate în clădire (Headcount)]
-- Feature 3: [Monitorizare în timp real a persoanelor aflate în clădire (Headcount)]
-- Feature 4: [Expirare automată a permiselor de acces după un interval de timp prestabilit.]
+- Feature 1: Generare și trimitere automată QR Code prin email pentru fiecare vizită programată.
+- Feature 2: Monitorizare în timp real a persoanelor aflate în clădire (Headcount)
+- Feature 3: Monitorizare în timp real a persoanelor aflate în clădire (Headcount)
+- Feature 4: Expirare automată a permiselor de acces după un interval de timp prestabilit.
 
 ---
 
 ## Technology Stack
 
 ### Backend
-- [Java 21]
-- [Spring Boot 3.5.12]
-- [Spring Data JPA]
-- [PostgreSQL]
-- [Spring Data JPA]
+- Java 21
+- Spring Boot 3.5.12
+- Spring Data JPA
+- PostgreSQL
+- Spring Data JPA
 
 ### Frontend
-- [Thymeleaf]
-- [HTML/CSS]
+- Thymeleaf
+- HTML/CSS
 
 ### Infrastructure
-- [Embedded Tomcat]
-- [Maven]
+- Embedded Tomcat
+- Maven
 
 ### Additional Tools/Libraries
-- [ZXing (generare QR Code)]
-- [Spring Mail (SMTP Gmail)]
-- [Jakarta Mail (Angus Mail)]
-- [HikariCP (connection pooling)]
-- [Spring Scheduling (pentru expirare automată)]
+- ZXing (generare QR Code)
+- Spring Mail (SMTP Gmail)
+- Jakarta Mail (Angus Mail)
+- HikariCP (connection pooling)
+- Spring Scheduling (pentru expirare automată)
 
 ---
 
@@ -51,25 +51,25 @@ Scopul principal este simularea unui sistem real de control acces și siguranț�
 
 ### High-Level Architecture
 
-[Sistemul este construit pe o arhitectură stratificată (Layered Architecture):
+Sistemul este construit pe o arhitectură stratificată (Layered Architecture):
 Utilizator (Browser)
 → Controller (Spring MVC)
 → Service Layer
 → Repository Layer (Spring Data JPA)
 → PostgreSQL Database
 
-Email-urile sunt trimise prin protocol SMTP folosind Gmail și autentificare prin App Password.]
+Email-urile sunt trimise prin protocol SMTP folosind Gmail și autentificare prin App Password.
 
 **Main Components:**
 
-1. **[VizitaController]**: [gestionează cererile HTTP, scanarea QR, intrarea/ieșirea din clădire, headcount-ul și evacuarea.]
-2. **[EmailService]**: [responsabil pentru trimiterea email-urilor]
-3. **[VizitaRepository]**: [interfață JPA pentru operații CRUD și interogări bazate pe status.]
-4. **[QRGenerator]**: [ generează coduri QR ce conțin URL-ul de acces pentru scanare.]
+1. **VizitaController**: gestionează cererile HTTP, scanarea QR, intrarea/ieșirea din clădire, headcount-ul și evacuarea.
+2. **EmailService**: responsabil pentru trimiterea email-urilor
+3. **VizitaRepository**: interfață JPA pentru operații CRUD și interogări bazate pe status.
+4. **QRGenerator**:  generează coduri QR ce conțin URL-ul de acces pentru scanare.
 
 ### Data Flows
 
-[Sistemul gestionează mai multe fluxuri principale de date.]
+Sistemul gestionează mai multe fluxuri principale de date.
 
 #### Data Flow 1 - Scanarea QR
 1. Vizitatorul scanează QR code-ul primit pe email.
@@ -104,17 +104,17 @@ Example:
 ## Screenshots
 
    ### Main Dashboard
-  ![Dashboard](images/panouprincipal.png)
+  ![Dashboard](ssatr-lab-DanielaPop/visitor-system-web/images/dashboard.png)
 
-   ### [Lista de vizite cu vizitele aferente]
-  ![Vizite](images/lista_vizite.png)
+   ### Lista de vizite cu vizitele aferente
+  ![Vizite](ssatr-lab-DanielaPop/visitor-system-web/images/lista_vizite.png)
 
-  ### [Persoanele din cladire dupa inregistratrea vizitei]
-  ![Persoane In Cladire](images/lista_vizite.png)
+  ### Persoanele din cladire dupa inregistratrea vizitei
+  ![Persoane In Cladire](ssatr-lab-DanielaPop/visitor-system-web/images/persoane_in_cladire.png)
 
-  ### [Scanadre QR / Badge]
-  ![QR](images/cod_QR.png)
-  ![Badge](images/mail.png)
+  ### Scanadre QR / Badge
+  ![QR](ssatr-lab-DanielaPop/visitor-system-web/images/cod_QR.png)
+  ![Badge](ssatr-lab-DanielaPop/visitor-system-web/images/mail.png)
 ---
 
 ## Database Schema
@@ -187,15 +187,15 @@ spring.mail.properties.mail.smtp.starttls.enable=true]
 
 OPTIONAL:
 
-**Challenge 1:** [Autentificare Gmail prin SMTP]  
-**Solution:** [Activarea autentificării în doi pași și generarea unei parole pentru aplicații ce a fost folosita in partea de cod (App Password).]
-**Problem no.1:** [Totul functioneaza doar daca nu se modifica agresa de mail.]
+**Challenge 1:** Autentificare Gmail prin SMTP] 
+**Solution:** Activarea autentificării în doi pași și generarea unei parole pentru aplicații ce a fost folosita in partea de cod (App Password).
+**Problem no.1:** Totul functioneaza doar daca nu se modifica agresa de mail.
 
-**Challenge 2:** [Gestionarea corectă a statusurilor la scanări repetate]  
-**Solution:** [Implementarea unei logici clare de tranziție între statusuri (PROGRAMATA → IN_CLADIRE → IESITA)]
+**Challenge 2:** Gestionarea corectă a statusurilor la scanări repetate]  
+**Solution:** Implementarea unei logici clare de tranziție între statusuri (PROGRAMATA → IN_CLADIRE → IESITA)
 
-**Challenge 3:** [Implementarea expirarii automate]
-**Solution:** [Utilizarea unui task programat (Spring Scheduling) și verificarea expirationTime la fiecare scanare.]
+**Challenge 3:** Implementarea expirarii automate
+**Solution:** Utilizarea unui task programat (Spring Scheduling) și verificarea expirationTime la fiecare scanare.
 ---
 
 ## Future Improvements
