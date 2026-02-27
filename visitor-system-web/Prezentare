@@ -1,41 +1,49 @@
 
-# [# [Visitor Management System] - SSATR IA 2025
+# [Visitor Management System] - SSATR IA 2025
 
-**Student:** [Your Name]  
-**Scenario:** [Scenario Number and Name]
+**Student:** [Pop Daniela-Felicia]  
+**Scenario:** [10. Visitor/Contractor Sign-In System ]
 
 ---
 
 ## Project Overview
 
-[Brief description of the project - 2-3 sentences explaining what the system does and its main purpose]
+[Acest proiect implementează un sistem inteligent de înregistrare și gestionare a vizitatorilor într-o clădire modernă. Sistemul permite programarea vizitelor, generarea și trimiterea automată a codurilor QR pentru acces, monitorizarea în timp real a persoanelor aflate în clădire și trimiterea QR prin email.
+
+Scopul principal este simularea unui sistem real de control acces și siguranță, incluzând funcționalități precum expirarea automată a permiselor și gestionarea situațiilor de urgență.]
 
 ### Key Features
 
-- Feature 1: [Brief description]
-- Feature 2: [Brief description]
-- Feature 3: [Brief description]
-- Feature 4: [Brief description]
+- Feature 1: [Generare și trimitere automată QR Code prin email pentru fiecare vizită programată.]
+- Feature 2: [Monitorizare în timp real a persoanelor aflate în clădire (Headcount)]
+- Feature 3: [Monitorizare în timp real a persoanelor aflate în clădire (Headcount)]
+- Feature 4: [Expirare automată a permiselor de acces după un interval de timp prestabilit.]
 
 ---
 
 ## Technology Stack
 
 ### Backend
-- [e.g., Java 17, Spring Boot 3.2]
-- [e.g., RabbitMQ / Apache Kafka]
-- [e.g., PostgreSQL / MongoDB]
+- [Java 21]
+- [Spring Boot 3.5.12]
+- [Spring Data JPA]
+- [PostgreSQL]
+- [Spring Data JPA]
 
 ### Frontend
-- [e.g., Thymeleaf, HTML/CSS/JavaScript]
-- [e.g., Bootstrap 5]
+- [Thymeleaf]
+- [HTML/CSS]
 
 ### Infrastructure
-- [e.g., Docker, Docker Compose]
-- [e.g., Maven]
+- [Embedded Tomcat]
+- [Maven]
 
 ### Additional Tools/Libraries
-- [List any other significant libraries or tools used]
+- [ZXing (generare QR Code)]
+- [Spring Mail (SMTP Gmail)]
+- [Jakarta Mail (Angus Mail)]
+- [HikariCP (connection pooling)]
+- [Spring Scheduling (pentru expirare automată)]
 
 ---
 
@@ -43,40 +51,60 @@
 
 ### High-Level Architecture
 
-[Provide a brief description of your system architecture. You should include a diagram image here and describe the main components and their interactions]
+[Sistemul este construit pe o arhitectură stratificată (Layered Architecture):
+Utilizator (Browser)
+→ Controller (Spring MVC)
+→ Service Layer
+→ Repository Layer (Spring Data JPA)
+→ PostgreSQL Database
+
+Email-urile sunt trimise prin protocol SMTP folosind Gmail și autentificare prin App Password.]
 
 **Main Components:**
 
-1. **[Component Name]**: [Brief description of responsibility]
-2. **[Component Name]**: [Brief description of responsibility]
-3. **[Component Name]**: [Brief description of responsibility]
+1. **[VizitaController]**: [gestionează cererile HTTP, scanarea QR, intrarea/ieșirea din clădire, headcount-ul și evacuarea.]
+2. **[EmailService]**: [responsabil pentru trimiterea email-urilor]
+3. **[VizitaRepository]**: [interfață JPA pentru operații CRUD și interogări bazate pe status.]
+4. **[QRGenerator]**: [ generează coduri QR ce conțin URL-ul de acces pentru scanare.]
 
 ### Data Flows
 
-[Describe how data flows through your system - from user input to final output/notification]
+[Sistemul gestionează mai multe fluxuri principale de date.]
 
-#### Data Flow 1
-1. User scans QR code
-2. Request sent to backend API
-3. Message published to RabbitMQ/Kafka
-4. Consumer processes message and updates database
-5. Real-time notification sent to relevant users
+#### Data Flow 1 - Scanarea QR
+1. Vizitatorul scanează QR code-ul primit pe email.
+2. Cererea este trimisă către backend.
+3. Backend verifică dacă permisul este valid sau expirat.
+4. Statusul vizitei este actualizat în baza de date prin"PROGRAMAT: ,:IN_CLADIRE" SAU :IESIT".
+5. Gazda primește notificare email la intrare cu codul QR.
 
+#### Data Flow 2 - Programarea vizitei
+1. Administratorul introduce datele vizitatorului.
+2. Sistemul salvează vizita în baza de date cu status PROGRAMATA.
+3. Se generează un QR Code unic.
+4. QR-ul este trimis automat pe email.
+
+#### Data Flow 3 – Evacuare de urgență
+1. Administratorul apasă butonul „Evacuare”.
+2. Sistemul interoghează toate vizitele cu status IN_CLADIRE.
+3. Se afișează lista persoanelor prezente.
+4. Administratorul apasa manual pe confirmarea evacuarilor.
 ---
 
 ### Simulations and Simplifications
 
-[Explain what aspects were simulated or simplified for the proof-of-concept]
+[Pentru realizarea prototipului au fost aplicate următoarele simplificări:]
 
 Example:
-- QR code scanning simulated using manual code input
-- GPS coordinates replaced with predefined location data
-- Mobile app replaced with responsive web interface
+- Scanarea QR este simulată prin accesarea unui URL.
+- Nu există integrare cu echipamente fizice de control acces.
+- Sistemul de evacuare este declanșat manual din interfața web.
+- Nu există integrare cu sisteme externe enterprise (ERP, Active Directory etc.).
 
 ## Screenshots
 
    ### Main Dashboard
-   [Image]
+   []
 
    ### [Feature Name]
    [Image]
