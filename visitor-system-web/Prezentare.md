@@ -104,17 +104,19 @@ Example:
 ## Screenshots
 
    ### Main Dashboard
-  ![Dashboard](studenty5/ssatr-lab-DanielaPop/blob/main/visitor-system-web/visitor-system-web/images/dashboard.png)
+![Dashboard](visitor-system-web/images/dashboard.png)
 
-   ### Lista de vizite cu vizitele aferente
-  ![Vizite](studenty5/ssatr-lab-DanielaPop/blob/main/visitor-system-web/visitor-system-web/images/lista_vizite.png)
+### Lista de vizite
+![Vizite](visitor-system-web/images/lista_vizite.png)
 
-  ### Persoanele din cladire dupa inregistratrea vizitei
-  ![Persoane In Cladire](studenty5/ssatr-lab-DanielaPop/blob/main/visitor-system-web/visitor-system-web/images/persoane_in_cladire.png)
+### Persoane în clădire
+![Persoane](visitor-system-web/images/persoane_in_cladire.png)
 
-  ### Scanadre QR / Badge
-  ![QR](studenty5/ssatr-lab-DanielaPop/blob/main/visitor-system-web/visitor-system-web/images/cod_QR.png)
-  ![Badge](studenty5/ssatr-lab-DanielaPop/blob/main/visitor-system-web/visitor-system-web/images/mail.png)
+### Scanare QR / Badge
+![QR](visitor-system-web/images/cod_QR.png)
+
+### Email trimis
+![Email](visitor-system-web/images/mail.png)
 ---
 
 ## Database Schema
