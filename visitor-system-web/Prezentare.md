@@ -25,6 +25,7 @@ Scopul principal este simularea unui sistem real de control acces și siguranț�
 
 ### Backend
 - Java 21
+- IntelliJ IDEA
 - Spring Boot 3.5.12
 - Spring Data JPA
 - PostgreSQL
@@ -135,7 +136,8 @@ Câmpuri principale:
 - visitor_type – tip vizitator (Visitor / Contractor /VIP)
 
 Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spring Data JPA.
-
+### Database
+![QR](visitor-system-web/images/sql.png)
 ---
 
 ## Running the Application
@@ -143,6 +145,7 @@ Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spri
 ### Prerequisites
 
 - Java 21
+- -IntelliJ IDEA
 - PostgreSQL
 - Maven 3.8+
 - Cont Gmail cu autentificare in doi pasi aplicata
