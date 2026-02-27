@@ -93,7 +93,7 @@ Sistemul gestionează mai multe fluxuri principale de date.
 
 ### Simulations and Simplifications
 
-[Pentru realizarea prototipului au fost aplicate următoarele simplificări:]
+Pentru realizarea prototipului au fost aplicate următoarele simplificări:
 
 Example:
 - Scanarea QR este simulată prin accesarea unui URL.
@@ -121,7 +121,7 @@ Example:
 
 ## Database Schema
 
-[Principala entitate este tabela visits.
+Principala entitate este tabela visits.
 Câmpuri principale:
 - id (UUID) – identificator unic
 - visitor_name – numele vizitatorului
@@ -134,7 +134,7 @@ Câmpuri principale:
 - status – PROGRAMATA / IN_CLADIRE / IESITA 
 - visitor_type – tip vizitator (Visitor / Contractor /VIP)
 
-Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spring Data JPA.]
+Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spring Data JPA.
 
 ---
 
