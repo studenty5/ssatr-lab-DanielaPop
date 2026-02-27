@@ -1,0 +1,20 @@
+<h2>Emergency Roll Call</h2>
+
+<h3>Total persoane în clădire: <span th:text="${headcount}"></span></h3>
+
+<table border="1">
+    <tr>
+        <th>Nume</th>
+        <th>Email</th>
+        <th>Gazdă</th>
+    </tr>
+
+    <tr th:each="v : ${vizite}">
+        <td th:text="${v.visitorName}"></td>
+        <td th:text="${v.email}"></td>
+        <td th:text="${v.hostName}"></td>
+    </tr>
+</table>
+<a th:href="@{/vizite/evacuare/trimite}">
+    Trimite email evacuare
+</a>

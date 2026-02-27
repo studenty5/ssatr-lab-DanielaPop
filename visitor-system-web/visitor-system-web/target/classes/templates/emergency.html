@@ -1,0 +1,29 @@
+<h1>🚨 Emergency Roll Call</h1>
+
+<h2>Persoane de evacuat</h2>
+
+<table border="1">
+    <tr>
+        <th>Nume</th>
+        <th>Gazda</th>
+        <th>Actiune</th>
+    </tr>
+
+    <tr th:each="v : ${evacuare}">
+        <td th:text="${v.visitorName}"></td>
+        <td th:text="${v.hostName}"></td>
+        <td>
+            <a th:href="@{'/vizite/emergency/confirm/' + ${v.id}}">
+                Confirm Evacuat
+            </a>
+        </td>
+    </tr>
+</table>
+
+<h2>Evacuati</h2>
+
+<ul>
+    <li th:each="v : ${evacuati}"
+        th:text="${v.visitorName}">
+    </li>
+</ul>

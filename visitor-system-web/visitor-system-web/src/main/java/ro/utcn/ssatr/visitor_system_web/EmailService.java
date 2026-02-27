@@ -1,5 +1,4 @@
 package ro.utcn.ssatr.visitor_system_web.service;
-
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -40,6 +39,40 @@ public class EmailService {
             FileSystemResource resource = new FileSystemResource(file);
             helper.addAttachment("visitor_qr.png", resource);
         }
+
+        mailSender.send(message);
+    }
+
+    public void sendEvacuationEmail(String to) throws Exception {
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setTo(to);
+        helper.setSubject("URGENT: Emergency Evacuation");
+
+        helper.setText(
+                "ATENȚIE!\n\n" +
+                        "Vă rugăm să evacuați imediat clădirea.\n\n" +
+                        "Urmați instrucțiunile de siguranță."
+        );
+
+        mailSender.send(message);
+    }
+
+    public void notifyHostArrival(String hostEmail, String visitorName)
+            throws Exception {
+
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
+
+        helper.setTo(hostEmail);
+        helper.setSubject("Vizitator sosit");
+
+        helper.setText(
+                "Vizitatorul " + visitorName +
+                        " a ajuns în clădire."
+        );
 
         mailSender.send(message);
     }

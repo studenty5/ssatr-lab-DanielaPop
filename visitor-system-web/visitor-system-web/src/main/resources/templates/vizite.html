@@ -10,9 +10,11 @@
 <a th:href="@{/vizite/noua}">Adaugă Vizită Nouă</a>
 |
 <a th:href="@{/vizite/active}">Vizitatori în clădire</a>
-
+<h3> Persoane în clădire: <span th:text="${headcount}"></span></h3>
 <br><br>
-
+<a href="/vizite/emergency/start">
+     START EMERGENCY
+</a>
 <table border="1">
     <tr>
         <th>Nume</th>
