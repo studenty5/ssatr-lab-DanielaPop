@@ -159,22 +159,33 @@ Baza de date utilizează PostgreSQL, iar accesul la date este realizat prin Spri
    cd [ssatr-lab-DanielaPop/visitor-system-web]
 ```
 
-2. **Configure**
+2. **Create the database (PostgreSQL)**
 ```bash
+Conectează-te în PostgreSQL și rulează:
+CREATE DATABASE facility_access;
+```
 
- - Database [CREATE DATABASE facility_access]
- - Configure Email (Gmail App Password) [ in application.properties:
+3. **Configure application.properties**
+```bash
+   Configure application.properties
+
+Seteaza: Database Connection
+spring.datasource.url=jdbc:postgresql://localhost:5432/facility_access
+spring.datasource.username=postgres
+spring.datasource.password=PAROLA_TA
+spring.jpa.hibernate.ddl-auto=update
+
+Email Configuration:
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
 spring.mail.username=emailul_tau@gmail.com
 spring.mail.password=parola_pentru_aplicatii
 spring.mail.properties.mail.smtp.auth=true
-spring.mail.properties.mail.smtp.starttls.enable=true]
+spring.mail.properties.mail.smtp.starttls.enable=true
 ```
-
-3. **Build the application**
+e. **Install dependencies and build***
 ```bash
-   mvn clean install
+mvn clean install
 ```
 
 5. **Run the application**
@@ -186,6 +197,12 @@ spring.mail.properties.mail.smtp.starttls.enable=true]
    - Web Interface: http://localhost:8080
    - Lista Vizite: http://localhost:8080/vizite
 
+7. **Test it**
+- Creează o vizită nouă
+- Verifică primirea emailului cu QR
+- Accesează link-ul din QR
+- Verifică actualizarea statusului în baza de date
+- Testează funcționalitatea de ieșire și evacuare
 ---
 
 ## Challenges and Solutions
@@ -193,7 +210,6 @@ spring.mail.properties.mail.smtp.starttls.enable=true]
 OPTIONAL:
 
 **Challenge 1:** Autentificare Gmail prin SMTP
-
 **Solution:** Activarea autentificării în doi pași și generarea unei parole pentru aplicații ce a fost folosita in partea de cod (App Password).
 
 **Problem no.1:** Totul functioneaza doar daca nu se modifica agresa de mail.
@@ -218,6 +234,18 @@ Deși aplicația este funcțională și îndeplinește cerințele de bază ale s
 - Restricționarea accesului în funcție de tipul vizitatorului și de zonele clădirii.
 Aceste îmbunătățiri ar transforma aplicația dintr-un prototip funcțional într-un sistem mult mai apropiat de un produs utilizabil într-un mediu real.]
 
-- [Improvement]
+## Limitări ale implementării față de cerințele inițiale
+
+Deși sistemul implementat este funcțional și acoperă majoritatea cerințelor de bază ale scenariului „Visitor/Contractor Sign-In System”, nu toate funcționalitățile propuse inițial au fost realizate complet.
+Următoarele cerințe au fost implementate doar parțial sau au rămas la nivel de prototip:
+
+- Verificarea identității vizitatorului – Sistemul permite scanarea QR-ului, însă nu există o validare reală a identității (document oficial, integrare cu sistem extern etc.).
+- Trimiterea QR prin SMS – Codul QR este trimis doar prin email; integrarea cu un serviciu SMS nu a fost realizată.
+- Management avansat al scanărilor – Nu există un mecanism robust pentru prevenirea scanărilor multiple consecutive sau utilizării abuzive a codului QR.
+- Notificări automate complete în caz de urgență – Deși există funcționalitatea de „Emergency Evacuation Roll Call”, trimiterea automată și fiabilă a mesajelor de avertizare către toți vizitatorii aflați în clădire nu este implementată complet.
+- Restricționarea accesului pe zone în funcție de tipul vizitatorului – Câmpul „visitor_type” există în baza de date, însă nu este implementată logica de control acces diferențiat pe zone ale clădirii.
+- Confirmare digitală a evacuării – Nu există un mecanism prin care vizitatorii să confirme individual că au părăsit clădirea în caz de urgență.
+
+În concluzie, aplicația reprezintă un prototip funcțional care demonstrează conceptele principale ale unui sistem de management al accesului, însă pentru a deveni un produs utilizabil într-un mediu real ar necesita extinderea componentelor de securitate, automatizare și control al situațiilor de urgență.
 
 
